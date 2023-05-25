@@ -1,4 +1,10 @@
 package lab01;
+/*
+ * 25/05/2023
+ * Laboratório 1 - POO
+ * Ian Kersz Amaral
+ * Programa Principal para os testes
+*/
 
 public class ProgramaPrincipal {
     public static void main(String[] args) {

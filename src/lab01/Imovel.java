@@ -1,4 +1,10 @@
 package lab01;
+/*
+ * 25/05/2023
+ * Laboratório 1 - POO
+ * Ian Kersz Amaral
+ * Modulo da classe Imovel
+*/
 
 public class Imovel {
     int nQuartos;
