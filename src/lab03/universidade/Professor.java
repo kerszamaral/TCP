@@ -1,4 +1,10 @@
 package lab03.universidade;
+/*
+ * 15/06/2023
+ * Laboratório 3 -  Relacionamento entre Classes
+ * Ian Kersz Amaral
+ * Modulo da classe Professor
+*/
 
 public class Professor {
     private int id;
@@ -18,9 +24,9 @@ public class Professor {
      * @param departamento
      */
     public Professor(int id, String departamento) {
-        if (id < 0) {
-            throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
-        }
+        // if (id < 0) {
+        // throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
+        // }
         this.id = id;
         this.departamento = departamento;
     }
@@ -29,9 +35,9 @@ public class Professor {
      * @param id the id to set
      */
     public void setId(int id) {
-        if (id < 0) {
-            throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
-        }
+        // if (id < 0) {
+        // throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
+        // }
         this.id = id;
     }
 

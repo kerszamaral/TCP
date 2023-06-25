@@ -1,10 +1,20 @@
 package lab03.universidade;
+/*
+ * 15/06/2023
+ * Laboratório 3 -  Relacionamento entre Classes
+ * Ian Kersz Amaral
+ * Modulo da classe Turma
+*/
 
 import java.util.ArrayList;
 
 public class Turma {
+
+    static final private int maxAlunosPorTurma = 35;
+    static final private int minAlunosPorTurma = 5;
     private int numAlunos;
 
+    static final private int maxMonitoresPorTurma = 3;
     private int numMonitores;
 
     private Professor professor;
@@ -32,16 +42,16 @@ public class Turma {
     public Turma(Professor professor, ArrayList<Monitor> monitores, ArrayList<Aluno> alunos) {
         this.professor = professor;
 
-        if (alunos.size() < 5) {
-            throw new IllegalArgumentException("Turma deve ter no mínimo 5 alunos");
-        } else if (alunos.size() > 35) {
-            throw new IllegalArgumentException("Turma deve ter no máximo 35 alunos");
+        if (alunos.size() < minAlunosPorTurma) {
+            throw new IllegalArgumentException("Turma deve ter no mínimo " + minAlunosPorTurma + " alunos");
+        } else if (alunos.size() > maxAlunosPorTurma) {
+            throw new IllegalArgumentException("Turma deve ter no máximo " + maxAlunosPorTurma + " alunos");
         }
         this.numAlunos = alunos.size();
         this.alunos = alunos;
 
-        if (monitores.size() > 3) {
-            throw new IllegalArgumentException("Turma deve ter no máximo 3 monitores");
+        if (monitores.size() > maxMonitoresPorTurma) {
+            throw new IllegalArgumentException("Turma deve ter no máximo " + maxMonitoresPorTurma + " monitores");
         }
         this.numMonitores = monitores.size();
         this.monitores = monitores;
@@ -54,10 +64,10 @@ public class Turma {
     public Turma(Professor professor, ArrayList<Aluno> alunos) {
         this.professor = professor;
 
-        if (alunos.size() < 5) {
-            throw new IllegalArgumentException("Turma deve ter no mínimo 5 alunos");
-        } else if (alunos.size() > 35) {
-            throw new IllegalArgumentException("Turma deve ter no máximo 35 alunos");
+        if (alunos.size() < minAlunosPorTurma) {
+            throw new IllegalArgumentException("Turma deve ter no mínimo " + minAlunosPorTurma + " alunos");
+        } else if (alunos.size() > maxAlunosPorTurma) {
+            throw new IllegalArgumentException("Turma deve ter no máximo " + maxAlunosPorTurma + " alunos");
         }
         this.numAlunos = alunos.size();
         this.alunos = alunos;
@@ -98,12 +108,14 @@ public class Turma {
      * 
      * @param monitores the monitores to set
      */
-    public void setMonitores(ArrayList<Monitor> monitores) {
-        if (monitores.size() > 3) {
-            throw new IllegalArgumentException("Turma deve ter no máximo 3 monitores");
+    public boolean setMonitores(ArrayList<Monitor> monitores) {
+        if (monitores.size() > maxMonitoresPorTurma) {
+            System.out.println("Turma deve ter no máximo " + maxMonitoresPorTurma + " monitores");
+            return false;
         }
         this.numMonitores = monitores.size();
         this.monitores = monitores;
+        return true;
     }
 
     /**
@@ -117,14 +129,21 @@ public class Turma {
      * 
      * @param alunos the alunos to set
      */
-    public void setAlunos(ArrayList<Aluno> alunos) {
-        if (alunos.size() < 5) {
-            throw new IllegalArgumentException("Turma deve ter no mínimo 5 alunos");
-        } else if (alunos.size() > 35) {
-            throw new IllegalArgumentException("Turma deve ter no máximo 35 alunos");
+    public boolean setAlunos(ArrayList<Aluno> alunos) {
+        if (alunos.size() < minAlunosPorTurma) {
+            // throw new IllegalArgumentException("Turma deve ter no mínimo " +
+            // minAlunosPorTurma + " alunos");
+            System.out.println("Turma deve ter no mínimo " + minAlunosPorTurma + " alunos");
+            return false;
+        } else if (alunos.size() > maxAlunosPorTurma) {
+            // throw new IllegalArgumentException("Turma deve ter no máximo " +
+            // maxAlunosPorTurma + " alunos");
+            System.out.println("Turma deve ter no máximo " + maxAlunosPorTurma + " alunos");
+            return false;
         }
         this.numAlunos = alunos.size();
         this.alunos = alunos;
+        return true;
     }
 
     /**
@@ -135,7 +154,8 @@ public class Turma {
     }
 
     public boolean adicionaAluno(Aluno aluno) {
-        if (this.numAlunos > 35) {
+        if (this.numAlunos > maxAlunosPorTurma) {
+            System.out.println("Turma já chegou ao máximo de alunos");
             return false;
         }
         this.alunos.add(aluno);
@@ -144,7 +164,8 @@ public class Turma {
     }
 
     public boolean removeAluno() {
-        if (this.numAlunos < 5) {
+        if (this.numAlunos < minAlunosPorTurma) {
+            System.out.println("Turma já chegou ao mínimo de alunos");
             return false;
         }
         this.alunos.remove(this.numAlunos - 1);

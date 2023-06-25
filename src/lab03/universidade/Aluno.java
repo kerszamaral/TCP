@@ -1,16 +1,24 @@
 package lab03.universidade;
+/*
+ * 15/06/2023
+ * Laboratório 3 -  Relacionamento entre Classes
+ * Ian Kersz Amaral
+ * Modulo da classe Aluno
+*/
 
 public class Aluno {
     private int id;
 
     private float indiceDesempenho;
+    static final private float notaMax = 10.0f;
+    static final private float notaMin = 0.0f;
 
     /**
      * Default constructor
      */
     public Aluno() {
         id = -1; // Assumimos que o id é -1
-        indiceDesempenho = 0.0f; // Assumimos que o índice de desempenho é 0.0
+        indiceDesempenho = notaMin; // Assumimos que o índice de desempenho é 0.0
     }
 
     /**
@@ -18,15 +26,16 @@ public class Aluno {
      * @param indiceDesempenho
      */
     public Aluno(int id, float indiceDesempenho) {
-        if (id < 0) {
-            throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
-        }
+        // Não foi estipulado, portanto removi
+        // if (id < 0) {
+        // throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
+        // }
         this.id = id;
 
-        boolean valorNegativo = indiceDesempenho < 0.0f;
-        boolean valorMaiorQueDez = indiceDesempenho > 10.0f;
-        if (valorNegativo || valorMaiorQueDez) {
-            throw new IllegalArgumentException("Indice de desempenho deve estar entre 0.0 e 10.0");
+        boolean valorNegativo = indiceDesempenho < notaMin;
+        boolean valorMaiorQueMaximo = indiceDesempenho > notaMax;
+        if (valorNegativo || valorMaiorQueMaximo) {
+            throw new IllegalArgumentException("Indice de desempenho deve estar entre " + notaMin + " e " + notaMax);
         }
 
         this.indiceDesempenho = indiceDesempenho;
@@ -36,9 +45,10 @@ public class Aluno {
      * @param id the id to set
      */
     public void setId(int id) {
-        if (id < 0) {
-            throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
-        }
+        // Não foi estipulado, portanto removi
+        // if (id < 0) {
+        // throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
+        // }
         this.id = id;
     }
 
@@ -57,10 +67,10 @@ public class Aluno {
     }
 
     public boolean aumentaIndiceDesempenho(float valor) {
-        boolean valorNegativo = valor < 0.0f;
-        boolean valorMaiorQueDez = valor > 10.0f;
-        boolean somaMaiorQueDez = valor + indiceDesempenho > 10.0f;
-        if (valorNegativo || valorMaiorQueDez || somaMaiorQueDez) {
+        boolean valorNegativo = valor < notaMin;
+        boolean valorMaiorQueMaximo = valor > notaMax;
+        boolean somaMaiorQueDez = valor + indiceDesempenho > notaMax;
+        if (valorNegativo || valorMaiorQueMaximo || somaMaiorQueDez) {
             return false;
         }
 
@@ -69,10 +79,10 @@ public class Aluno {
     }
 
     public boolean diminuiIndiceDesempenho(float valor) {
-        boolean valorNegativo = valor < 0.0f;
-        boolean valorMaiorQueDez = valor > 10.0f;
-        boolean subtracaoMenorQueZero = indiceDesempenho - valor < 0.0f;
-        if (valorNegativo || valorMaiorQueDez || subtracaoMenorQueZero) {
+        boolean valorNegativo = valor < notaMin;
+        boolean valorMaiorQueMaximo = valor > notaMax;
+        boolean subtracaoMenorQueMinimo = indiceDesempenho - valor < notaMin;
+        if (valorNegativo || valorMaiorQueMaximo || subtracaoMenorQueMinimo) {
             return false;
         }
 

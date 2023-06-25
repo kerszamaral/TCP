@@ -1,4 +1,10 @@
 package lab03.universidade;
+/*
+ * 15/06/2023
+ * Laboratório 3 -  Relacionamento entre Classes
+ * Ian Kersz Amaral
+ * Modulo da classe Monitor
+*/
 
 public class Monitor {
     private int id;
@@ -18,6 +24,10 @@ public class Monitor {
      * @param temExperiencia
      */
     public Monitor(int id, boolean temExperiencia) {
+        // Não foi estipulado, portanto removi
+        // if (id < 0) {
+        // throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
+        // }
         this.id = id;
         this.temExperiencia = temExperiencia;
     }
@@ -26,9 +36,10 @@ public class Monitor {
      * @param id the id to set
      */
     public void setId(int id) {
-        if (id < 0) {
-            throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
-        }
+        // Não foi estipulado, portanto removi
+        // if (id < 0) {
+        // throw new IllegalArgumentException("Id deve ser maior ou igual a 0");
+        // }
         this.id = id;
     }
 
