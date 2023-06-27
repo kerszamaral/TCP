@@ -1,4 +1,4 @@
-package lab03;
+package lab03.teste;
 
 import java.util.ArrayList;
 import lab03.universidade.*;
